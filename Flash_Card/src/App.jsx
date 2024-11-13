@@ -10,40 +10,7 @@ export default function App() {
 }
 
 function FlashCards() {
-  const [questions, setQuestions] = useState([
-
-    {
-      id: 3457,
-      question: "What language is React based on?",
-      answer: "JavaScript"
-    },
-    {
-      id: 7336,
-      question: "What are the building blocks of React apps?",
-      answer: "Components"
-    },
-    {
-      id: 8832,
-      question: "What's the name of the syntax we use to describe a UI in React?",
-      answer: "JSX"
-    },
-    {
-      id: 1297,
-      question: "How to pass data from parent to child components?",
-      answer: "Props"
-    },
-    {
-      id: 9103,
-      question: "How to give components memory?",
-      answer: "useState hook"
-    },
-    {
-      id: 2002,
-      question:
-      "What do we call an input element that is completely synchronised with state?",
-      answer: "Controlled element"
-    }
-  ]);
+  const [questions, setQuestions] = useState(null);
 
   const [selectedId, setSelectedId] = useState(null);
 
@@ -57,15 +24,23 @@ function FlashCards() {
     setQuestions(updatedQuestions);
   }
 
-  const [name, setName] = useState('mario')
-useEffect(() => {
-  alert('welcome back')
   
-},[name])//empty depencies makes us render the useffect function once 
+  const [name, setName] = useState('mario')
+ useEffect(()=>{
+fetch('http://localhost:8000/blogs')
+.then(response => response.json())
+.then(result => console.log(result)
+);
+
+});
+
+  
+  
+//empty depencies makes us render the useffect function once 
 
   return (
     <div className='flashcards'>
-      {questions.map(blog => 
+      {/* {questions.map(blog => 
         <div key={blog.id} className={blog.id === selectedId ? "selected" : ""} 
           onClick={() => handleClick(blog.id)}>
           <p>
@@ -80,7 +55,8 @@ useEffect(() => {
        <button onClick={() => {setName('Amanuel')}}>Click to change name</button>
        {name}
         </div>
-      )}
+      )} */}
+     <p>this is the original name {name}</p>
     </div>
   );
 }
